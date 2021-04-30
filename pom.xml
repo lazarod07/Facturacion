@@ -97,6 +97,12 @@
 				<configuration>
 					<mainClass>co.cristian.springboot.app.SpringBootDataJpaApplication</mainClass>
 				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>compile</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
