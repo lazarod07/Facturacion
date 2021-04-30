@@ -20,13 +20,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	private JpaUserDetailsService userDetailService;
 
 	@Autowired
 	public void configurerGlobal(AuthenticationManagerBuilder buider) throws Exception {
-		
+
 		buider.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);
 
 	}
@@ -34,9 +34,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar","/locale").permitAll().anyRequest()
-				.authenticated().and().formLogin().successHandler(successHandler).loginPage("/login").permitAll().and()
-				.logout().permitAll().and().exceptionHandling().accessDeniedPage("/error_403");
+		http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar**", "/locale").permitAll()
+				.anyRequest().authenticated().and().formLogin().successHandler(successHandler).loginPage("/login")
+				.permitAll().and().logout().permitAll().and().exceptionHandling().accessDeniedPage("/error_403");
 	}
 
 }
